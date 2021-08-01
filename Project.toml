@@ -1,0 +1,13 @@
+name = "GeometricInterpretation"
+uuid = "e0c4c091-863b-4dbd-bb4a-f2fbd281d44d"
+authors = ["Shalin Patel <shalin.kp.patel@gmail.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
