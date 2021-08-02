@@ -1,0 +1,21 @@
+abstract type GeometricInterpretor end
+
+struct GNNInterpretation{Interpretor <: GeometricInterpretor}
+    model :: Chain
+    fg :: FeaturedGraph
+    X :: Matrix{T <: Real}
+    y :: Array{T <: Int}
+    interpretor :: Interpretor
+end
+
+struct GNNInterpretationResults
+    edge_mask :: FeaturedGraph
+    node_feat_mask :: Union{Matrix{T <: Real}, Nothing}
+end
+
+function explain_node(method :: GNNInterpretation{T <: GeometricInterpretor}, node :: Int) :: GNNInterpretationResults end
+
+function visualize_explanation(edge_mask :: FeaturedGraph)
+    swg = graph(edge_mask)
+    graphplot(swg |> SimpleDiGraph, arrow_shift = 0.75, arrow_size=20, edge_width=2.5, edge_color=:darkgray, node_color=[3, 5, 3]) # add weights, node colors, node labels
+end
