@@ -3,17 +3,18 @@ abstract type GeometricInterpretor end
 struct GNNInterpretation{Interpretor <: GeometricInterpretor}
     model :: Chain
     fg :: FeaturedGraph
-    X :: Matrix{T <: Real}
-    y :: Array{T <: Int}
+    X :: Matrix{Real}
+    y :: Array{Int}
     interpretor :: Interpretor
 end
 
 struct GNNInterpretationResults
     edge_mask :: FeaturedGraph
-    node_feat_mask :: Union{Matrix{T <: Real}, Nothing}
+    node_feat_mask :: Union{Matrix{Real}, Nothing}
 end
 
-function explain_node(method :: GNNInterpretation{T <: GeometricInterpretor}, node :: Int) :: GNNInterpretationResults end
+function explain_node(method :: GNNInterpretation{GeometricInterpretor}, 
+    node :: Int) :: GNNInterpretationResults end
 
 function visualize_explanation(edge_mask :: FeaturedGraph)
     swg = graph(edge_mask)
