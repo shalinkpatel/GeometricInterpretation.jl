@@ -20,4 +20,5 @@ makedocs(;
 
 deploydocs(;
     repo="github.com/shalinkpatel/GeometricInterpretation.jl",
+    devbranch = "main"
 )
